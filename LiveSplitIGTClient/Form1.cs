@@ -24,15 +24,24 @@ namespace LiveSplitIGTClient {
         }
 
         private void inputMarkIGT_TextChanged(object sender, EventArgs e) {
-            string[] parts = inputMarkIGT.Text.Split(" :.,".ToCharArray());
-            uint seconds = 0;
-            foreach(var part in parts) {
+            double seconds = 0;
+            if(radioHHMMSS.Checked) {
+                string[] parts = inputMarkIGT.Text.Split(" :.,".ToCharArray());
+                foreach(var part in parts) {
+                    try {
+                        seconds = (seconds * 60) + int.Parse(part);
+                    } catch(FormatException ex) {
+                        return; // do nothing if string is bad
+                    }
+                }
+            } else if(radioNumberOfSeconds.Checked) {
                 try {
-                    seconds = (seconds * 60) + uint.Parse(part);
+                    seconds = double.Parse(inputMarkIGT.Text);
                 } catch(FormatException ex) {
                     return; // do nothing if string is bad
                 }
             }
+            
             string cmdStr = $"markigt {seconds}";
             byte[] cmd = Encoding.ASCII.GetBytes(cmdStr);
             try {
@@ -44,6 +53,14 @@ namespace LiveSplitIGTClient {
             } catch(TimeoutException ex) {
                 MessageBox.Show("Could not connect to LiveSplit");
             }
+        }
+
+        private void radioHHMMSS_CheckedChanged(object sender, EventArgs e) {
+            inputMarkIGT_TextChanged(null, null);
+        }
+
+        private void radioNumberOfSeconds_CheckedChanged(object sender, EventArgs e) {
+            inputMarkIGT_TextChanged(null, null);
         }
     }
 }
