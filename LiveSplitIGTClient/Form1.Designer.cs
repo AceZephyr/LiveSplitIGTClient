@@ -29,21 +29,32 @@
             this.label1 = new System.Windows.Forms.Label();
             this.inputMarkIGT = new System.Windows.Forms.TextBox();
             this.radioHHMMSS = new System.Windows.Forms.RadioButton();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.radioMarkOnRelease = new System.Windows.Forms.RadioButton();
+            this.radioMarkOnPress = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonMark
             // 
+            this.buttonMark.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonMark.Location = new System.Drawing.Point(12, 12);
             this.buttonMark.Name = "buttonMark";
             this.buttonMark.Size = new System.Drawing.Size(307, 96);
             this.buttonMark.TabIndex = 0;
             this.buttonMark.Text = "Mark";
             this.buttonMark.UseVisualStyleBackColor = true;
-            this.buttonMark.Click += new System.EventHandler(this.buttonMark_Click);
+            this.buttonMark.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonMark_KeyDown);
+            this.buttonMark.KeyUp += new System.Windows.Forms.KeyEventHandler(this.buttonMark_KeyUp);
+            this.buttonMark.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonMark_MouseDown);
+            this.buttonMark.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonMark_MouseUp);
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -104,17 +115,60 @@
             this.radioHHMMSS.UseVisualStyleBackColor = true;
             this.radioHHMMSS.CheckedChanged += new System.EventHandler(this.radioHHMMSS_CheckedChanged);
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.radioMarkOnRelease, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.radioMarkOnPress, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 202);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(307, 39);
+            this.tableLayoutPanel2.TabIndex = 2;
+            // 
+            // radioMarkOnRelease
+            // 
+            this.radioMarkOnRelease.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioMarkOnRelease.AutoSize = true;
+            this.radioMarkOnRelease.Location = new System.Drawing.Point(156, 11);
+            this.radioMarkOnRelease.Name = "radioMarkOnRelease";
+            this.radioMarkOnRelease.Size = new System.Drawing.Size(106, 17);
+            this.radioMarkOnRelease.TabIndex = 4;
+            this.radioMarkOnRelease.Text = "Mark on Release";
+            this.radioMarkOnRelease.UseVisualStyleBackColor = true;
+            // 
+            // radioMarkOnPress
+            // 
+            this.radioMarkOnPress.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.radioMarkOnPress.AutoSize = true;
+            this.radioMarkOnPress.Checked = true;
+            this.radioMarkOnPress.Location = new System.Drawing.Point(57, 11);
+            this.radioMarkOnPress.Name = "radioMarkOnPress";
+            this.radioMarkOnPress.Size = new System.Drawing.Size(93, 17);
+            this.radioMarkOnPress.TabIndex = 3;
+            this.radioMarkOnPress.TabStop = true;
+            this.radioMarkOnPress.Text = "Mark on Press";
+            this.radioMarkOnPress.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 207);
+            this.ClientSize = new System.Drawing.Size(331, 257);
+            this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.buttonMark);
             this.Name = "Form1";
             this.Text = "LiveSplit IGT Client";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -127,6 +181,9 @@
         private System.Windows.Forms.TextBox inputMarkIGT;
         private System.Windows.Forms.RadioButton radioNumberOfSeconds;
         private System.Windows.Forms.RadioButton radioHHMMSS;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.RadioButton radioMarkOnRelease;
+        private System.Windows.Forms.RadioButton radioMarkOnPress;
     }
 }
 

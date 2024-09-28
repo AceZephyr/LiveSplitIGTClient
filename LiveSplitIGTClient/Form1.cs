@@ -11,7 +11,7 @@ namespace LiveSplitIGTClient {
 
         byte[] MARK = Encoding.ASCII.GetBytes("mark");
 
-        private void buttonMark_Click(object sender, EventArgs e) {
+        private void clickMark() {
             try {
                 using(NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", "LiveSplitIGT", PipeDirection.Out)) {
                     pipeClient.Connect(500);
@@ -20,7 +20,9 @@ namespace LiveSplitIGTClient {
                 }
             } catch(TimeoutException ex) {
                 MessageBox.Show("Could not connect to LiveSplit");
+                return;
             }
+            inputMarkIGT_TextChanged(null, null);
         }
 
         private void inputMarkIGT_TextChanged(object sender, EventArgs e) {
@@ -61,6 +63,26 @@ namespace LiveSplitIGTClient {
 
         private void radioNumberOfSeconds_CheckedChanged(object sender, EventArgs e) {
             inputMarkIGT_TextChanged(null, null);
+        }
+
+        private void buttonMark_MouseDown(object sender, MouseEventArgs e) {
+            if(radioMarkOnPress.Checked)
+                clickMark();
+        }
+
+        private void buttonMark_KeyDown(object sender, KeyEventArgs e) {
+            if(radioMarkOnPress.Checked)
+                clickMark();
+        }
+
+        private void buttonMark_MouseUp(object sender, MouseEventArgs e) {
+            if(radioMarkOnRelease.Checked)
+                clickMark();
+        }
+
+        private void buttonMark_KeyUp(object sender, KeyEventArgs e) {
+            if(radioMarkOnRelease.Checked)
+                clickMark();
         }
     }
 }
